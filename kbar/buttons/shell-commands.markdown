@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Menu Item Button
-permalink: /kbar/buttons/menu-item/
+title: Run Shell Commands
+permalink: /kbar/buttons/shell-commands/
 ---
 # Frequenty Asked Questions #
 Nothing yet...
