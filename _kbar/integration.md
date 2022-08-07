@@ -11,7 +11,7 @@ If you write scripts or extensions for After Effects you can check if it was lau
 ## JSX Integration
 If you're writing a JSX script it needs to detect if it was launched from KBar and if so, what arguments were passed in.  This is achieved by checking for the existance of the `kbar` global variable and seeing if there is a nested `button` variable on it.  From there you have details on the button that was clicked.  You can see this in the example below.
 
-#### KBar API
+### KBar API
 KBar comes with a few useful tools to help you author scripts.  One is an implementation of `JSON` and another is an internal reference to [AEQuery](https://aenhancers.github.io/aequery/), a popular utility library for After Effects.
 
 
