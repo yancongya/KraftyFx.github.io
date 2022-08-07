@@ -2,6 +2,7 @@
 layout: default
 title: JSX and Scripts
 permalink: /kbar/buttons/scripts/
+parent: KBar Buttons
 ---
 # JSX(BIN) and Scriptlet FAQ
 ## The panel for my script doesn't dock anymore. How do I fix this? ##
@@ -12,7 +13,7 @@ Some users are scared to modify code but can handle modifying a simple string va
 
 If you want to use this field for your scriptlets you can use this snippet to get the value:
 
-```
+```javascript
 var button = (typeof kbar !== 'undefined') ? kbar.button : null;
 
 if (button)

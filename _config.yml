@@ -26,14 +26,23 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  kraftyfx
 
-header_pages:
-  - about.md
-  - kbar/index.md
+remote_theme: just-the-docs/just-the-docs
 
-# Build settings
-theme: minima
-#plugins:
-#  - jekyll-feed
+aux_links:
+  "Download KBar":
+    - "//aescripts.com/kbar"
+
+aux_links_new_tab: true
+
+collections:
+  kbar_buttons:
+    permalink: "/:collection/:path/"
+    output: true
+
+just_the_docs:
+  collections:
+    kbar_buttons:
+      name: KBar Buttons
 
 # Exclude from processing.
 # The following items will not be processed, by default.
