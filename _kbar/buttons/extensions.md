@@ -5,5 +5,6 @@ permalink: /kbar/buttons/extensions/
 parent: Buttons
 ---
 # Frequenty Asked Questions
-## How do a run a specific feature of an extension?
-I'm working on it...
+## How do I make KBar call a specific feature in another tool?
+
+See the [FAQ on script buttons]({{ site.baseurl }}{% link _kbar/buttons/scripts.md %}) on how to do this.
