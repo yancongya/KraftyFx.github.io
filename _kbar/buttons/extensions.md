@@ -2,7 +2,7 @@
 layout: default
 title: Extensions
 permalink: /kbar/buttons/extensions/
-parent: KBar Buttons
+parent: Buttons
 ---
 # Frequenty Asked Questions
 ## How do a run a specific feature of an extension?

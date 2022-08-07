@@ -1,8 +1,8 @@
 ---
 layout: default
-title: KBar Buttons
-nav_order: 1
-has_children: true
+title: Buttons
 permalink: /kbar/buttons
+nav_order: 2
+has_children: true
 ---
 KBar has a lot of different button types.  Most of them are self explanitory like presets and effects but some are special like the ones below.

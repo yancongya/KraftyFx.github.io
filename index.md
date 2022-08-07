@@ -1,4 +1,4 @@
 ---
 layout: home
 ---
-Welcome! Are you looking for documentation on [KBar Buttons]({{ site.baseurl }}{% link _kbar_buttons/index.md %})?
+Hi there! This website is the home for the documentation of KBar and other products made by KraftyFx.

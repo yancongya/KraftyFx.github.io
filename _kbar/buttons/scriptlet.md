@@ -2,7 +2,7 @@
 layout: default
 title: JSX and Scripts
 permalink: /kbar/buttons/scripts/
-parent: KBar Buttons
+parent: Buttons
 ---
 # JSX(BIN) and Scriptlet FAQ
 ## The panel for my script doesn't dock anymore. How do I fix this? ##

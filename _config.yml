@@ -29,20 +29,26 @@ github_username:  kraftyfx
 remote_theme: just-the-docs/just-the-docs
 
 aux_links:
-  "Download KBar":
+  "Get KBar":
     - "//aescripts.com/kbar"
 
 aux_links_new_tab: true
 
 collections:
-  kbar_buttons:
+  kbar:
+    permalink: "/:collection/:path/"
+    output: true
+
+  about:
     permalink: "/:collection/:path/"
     output: true
 
 just_the_docs:
   collections:
-    kbar_buttons:
-      name: KBar Buttons
+    kbar:
+      name: KBar Documentation
+    about:
+      name: About
 
 # Exclude from processing.
 # The following items will not be processed, by default.

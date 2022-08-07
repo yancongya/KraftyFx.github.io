@@ -2,7 +2,7 @@
 layout: default
 title: Menu Items
 permalink: /kbar/buttons/menu-item/
-parent: KBar Buttons
+parent: Buttons
 ---
 # Frequenty Asked Questions #
 ## 1.  Can I invoke a custom menu item in the Scripts or Window menu? ##
