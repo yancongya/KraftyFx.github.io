@@ -32,6 +32,10 @@ just_the_docs:
 plugins:
   - jekyll-seo-tag
 
+exclude:
+  - package.json
+  - yarn.lock
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
