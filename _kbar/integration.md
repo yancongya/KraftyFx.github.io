@@ -66,7 +66,11 @@ csInterface.addEventListener(csInterface.getExtensionID() + ".kbar", function (e
 If your tool lets users build a library of presets you can enhance it by exporting `.kbar` files that can be opened by any KBar user.
 
 ## `.kbar` Format
-A KBar export is a simple zip file.  The easiest way to understand the format is to make an export with KBar, change the file extension from `.kbar` to `.zip`, then extract it.  Once extracted you'll notice it contains a `manifest.json` file at the root describing all the buttons it contains.  If your export included script files, FFX's, or shell scripts you'll see dedicated directories to hold them as well.
+A KBar export is a simple zip file.  The easiest way to understand the format is to make an export with KBar, change the file extension from `.kbar` to `.zip`, then extract it.  Once extracted you'll notice it contains a simple `manifest.json` file at the root describing all the buttons it contains.  If your export included script files, FFX's, or shell scripts you'll see dedicated directories to hold them as well.
+
+### Schema
+
+The 
 
 ## Export Strategies
 Depending on how independent you want it to be you have a few options on how to build it.
