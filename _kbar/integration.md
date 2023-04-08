@@ -51,4 +51,13 @@ else
 ```
 
 ## CEP Integration
-I'm still figuring this out.  [Talk to me](mailto:info@kraftyfx.com) to help me understand what you're trying to do.
+Similar to script buttons, CEP extensions can check for KBar invocation by listening to a [CEP Event](https://github.com/Adobe-CEP/CEP-Resources/blob/master/CEP_10.x/Documentation/CEP%2010.0%20HTML%20Extension%20Cookbook.md#cep-events) sent to the same extension id with `.kbar` at the end.  When the button is pressed it first calls `requestOpenExtension` with the target extension id and then `dispatchEvent` to it.  Note that the event will only be received by your extension if it is open AND the listener is registered; otherwise, clicking an extension button will only open it.
+
+```javascript
+var csInterface = new CSInterface();
+
+csInterface.addEventListener(csInterface.getExtensionID() + ".kbar", function (event)
+{
+     console.log("Invoked from KBar " + event.data);
+}
+```
