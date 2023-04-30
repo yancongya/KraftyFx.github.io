@@ -5,15 +5,12 @@ permalink: /kbar/integration
 nav_order: 2
 ---
 # KBar Integration Guide
-If you write scripts or extensions for After Effects you can expose your functionality in a way that's accessible to KBar.  Popular tools like [Explode Shape Layers](https://aescripts.com/explode-shape-layers/), [Key Cloner](https://conigs.com/tools/key-cloner/), [Ray Dynamic Color](https://docs.google.com/document/d/10OnBN80BgcECx_2EeW5UMm6BmomiyRYAxTUbnQdstio/edit), [Mocha Import](https://mamoworld.com/article/mochaimport-kbar-api) do this and you can too.
+If you write scripts or extensions for After Effects you can expose your functionality in a way that's callable by KBar buttons.  Popular tools like [Explode Shape Layers](https://aescripts.com/explode-shape-layers/?src=kbar-docs), [Key Cloner](https://conigs.com/tools/key-cloner/?src=kbar-docs), [Ray Dynamic Color](https://docs.google.com/document/d/10OnBN80BgcECx_2EeW5UMm6BmomiyRYAxTUbnQdstio/edit), [Mocha Import](https://mamoworld.com/article/mochaimport-kbar-api?src=kbar-docs), and [Flow](https://aescripts.com/flow/?src=kbar-docs) and many others do this and you can too.
 
+A tool can integrate with KBar depending on if it is built as a JSX script or with CEP.  Currently, no special integrations are offered for C++ plugins, however, it should be possible.
 
 # JSX Integration
-If you're writing a JSX script it needs to detect if it was launched from KBar and if so, what arguments were passed in.  This is achieved by checking for the existance of the `kbar` global variable and seeing if there is a nested `button` variable on it.  From there you have details on the button that was clicked.  You can see this in the example below.
-
-## KBar API
-KBar comes with a few useful tools to help you author scripts.  One is an implementation of `JSON` and another is an internal reference to [AEQuery](https://aenhancers.github.io/aequery/), a popular utility library for After Effects.
-
+If your tool is exclusively JSX based it needs to detect if it was launched from KBar and if so, what arguments were passed in.  This is achieved by checking for the `kbar` global variable and a `button` member variable.  From there you have details on the button that was clicked (example below).
 
 ## Example
 ```javascript
@@ -48,84 +45,58 @@ else
 }
 ```
 
-# CEP Integration
-Similar to script buttons, CEP extensions can check for KBar invocation by listening to a [CEP Event](https://github.com/Adobe-CEP/CEP-Resources/blob/master/CEP_10.x/Documentation/CEP%2010.0%20HTML%20Extension%20Cookbook.md#cep-events) sent to the same extension id with `.kbar` at the end.  When the button is pressed it first calls `requestOpenExtension` with the target extension id and then `dispatchEvent` to it.  Note that the event will only be received by your extension if it is open AND the listener is registered; otherwise, clicking an extension button will only open it.
+## KBar API
+KBar comes with libraries to help you author scripts.  One is an implementation of `JSON` and another is an internal reference to [AEQuery](https://aenhancers.github.io/aequery/), a popular utility library for After Effects developers.
 
-## Example
+
+# CEP Integration
+If your tool is CEP based you can listen for a [CEP Event](https://github.com/Adobe-CEP/CEP-Resources/blob/master/CEP_10.x/Documentation/CEP%2010.0%20HTML%20Extension%20Cookbook.md#cep-events) sent to your extension id with `.kbar` at the end.
+
+When a KBar extension button is pressed it first calls `requestOpenExtension` with the target extension id and then `dispatchEvent` with argument data.  Note that the notification will only be received by your extension if it is open AND the listener is registered; otherwise, clicking an extension button will only open it.
+
 ```javascript
 var csInterface = new CSInterface();
 
 csInterface.addEventListener(csInterface.getExtensionID() + ".kbar", function (event)
 {
-     alert("Invoked from KBar " + event.data);
+   // event.data contains the button argument
+   alert("Invoked from KBar " + event.data);
 }
 ```
 
-# Toolbar Exports
+## KBar Export Integration
 
-If your tool lets users build a library of presets you can enhance it by exporting `.kbar` files that can be opened by any KBar user.
+If your tool supports a library of presets as part of its UX you can enhance it by exporting as buttons to a `.kbar` file.  You can see an example of this with [Flow](https://aescripts.com/flow/?src=kbar-docs).
 
-## `.kbar` Format
-A KBar export is a simple zip file.  The easiest way to understand the format is to make an export with KBar, change the file extension from `.kbar` to `.zip`, then extract it.  Once extracted you'll notice it contains a simple `manifest.json` file at the root describing all the buttons it contains.  If your export included script files, FFX's, or shell scripts you'll see dedicated directories to hold them as well.
+When building an export it is important to decide if the export should be usable without your tool being installed.
 
-### Schema
+If you want a self contained experience then you you will bake in a JSX file, preset, or shell script into the export and your buttons will call into them.  Baking a CEP extension is not supported because of the [security challenges around installation](https://github.com/Adobe-CEP/CEP-Resources/blob/master/CEP_10.x/Documentation/CEP%2010.0%20HTML%20Extension%20Cookbook.md#extension-folders).
 
-The 
+If the kbar button can/should only work if your tool is first installed then you should test the KBar experience when the tool is not availble.  Unfortunately, there is no standard way to detect if a certain tool is installed and/or running and most solutions come with other problems that are impossible to reliably solve.
 
-## Export Strategies
-Depending on how independent you want it to be you have a few options on how to build it.
+For JSX based tools one way to handle this is to have the main tool declare a global variable with an uncommon name and the KBar JSX button can check if it's defined. If it is then you know the tool is installed and running.  If the global is not found then you can alert the user to open it.
 
-1. Bake an entire JSX tool into the export. This works well if you don't care about multiple variants/copies of your script being distributed.
-1. If your tool is CEP based build a toolbar that uses extension buttons.
-1. If your tool is JSX only use scriptlets or bake a companion JSX file into the export that talks to your main tool through a common global variable in ESTK (see below).
-
-### Companion Script(let) put in exports for JSX only tools
 ```javascript
-if (typeof MyCoolToolName_CalledFromKBar === 'undefined') {
-   alert('MyCoolToolName is not running and needs to be opened first.');
+// A line of code in your tool that has a unique global variable.
 
-   var toolPath = File.openDialog("MyCoolToolName.jsx:MyCoolToolName.jsx; All files:*.*");
+_my_tool_name_is_running = true;
+```
 
-   if (toolPath) {
-      $.evalFile(toolPath.absoluteURI);
-   }
+```javascript
+// KBar Scriptlet button
+
+if (typeof _my_tool_name_is_running === 'undefined') {
+   alert('Please install and run my_tool_name then try again.');
 } else {
-   MyCoolToolName_CalledFromKBar();
+   // Do something in the tool
 }
 ```
 
+For CEP based tools it is recommend to use extension buttons and let KBar show an error if the extension is not installed.  Attemping to call JSX code bundled with the CEP extension is discouraged because bundled code is not loaded when the extension starts. **Do not try to force load your JSX code at extension startup.** It can cause your tool and After Effects to lock up and crash very easily.
 
-### Additional logic in the main tool
-```javascript
-MyCoolToolName_CalledFromKBar = function() {
-   var isLicensed = true;         // This value should come from whatever licensing system you use like aescripts.
+## KBar Export Format
 
-   if (!isLicensed) {
-      alert('Please buy this tool first!');
-      return;
-   }
+A KBar export is a zip file with a `manifest.json` file that describes a list of buttons and supporting assets like scripts, presets, and shell scripts.  The easiest way to see and understand the format is to make an baked export with KBar, change the extension from `.kbar` to `.zip`, then extract it.
 
-   var version = kbar.version;  // KBar version like '3.0.0'
-   var JSON = kbar.JSON;        // Lets you stringify/parse JSON strings
-   var aeq = kbar.aeq;          // Lets you use aequery
+The schema of `manifest.json` is fairly simple.  Unfortunately, there is no official NPM package with the validation logic or TypeScript definitions yet but you can grab a quick gist I made [here](https://gist.github.com/rafikhan/f3f9e7a77b71c6a1150ff6e8f0f50353) for now.
 
-   var button = kbar.button;
-   var id = button.id;          // A randomly generated string by KBar
-   var name = button.name;      // The name the user set for the button
-
-   switch(button.argument)
-   {
-      case 'Function 1': 
-         doSomething(); 
-         break;
-
-      case 'Function 2':
-         doSomethingElse();
-         break;
-
-      default:
-         alert("I don't know what the argument " + button.argument + " is supposed to do");
-         break;
-   }
-}
-```
