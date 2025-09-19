@@ -24,16 +24,16 @@ hero:
 features:
   - title: 可定制的工具栏
     details: 使用简洁易用的用户界面，构建个性化且可分享的工具栏。
-    link: /zh/kbar/
+    link: /kbar/
   - title: 多功能按钮
     details: 支持效果、预设、菜单命令、表达式、脚本、扩展和 Shell 命令等多种按钮类型。
-    link: /zh/kbar/buttons/
+    link: /kbar/buttons/
   - title: 深度自定义
     details: 可自定义文字标签、超过600个内置图标，并支持自定义 PNG/SVG 图标文件。
-    link: /zh/kbar/tips/
+    link: /kbar/tips/
   - title: 批量管理
     details: 支持批量导入和导出按钮，方便您管理和分享您的工具栏设置。
-    link: /zh/kbar/integration/
+    link: /kbar/integration/
 ---
 
 <div style="text-align: center; padding: 2rem 1rem;">

@@ -7,6 +7,15 @@ export default defineConfig({
   base: '/',
   cleanUrls: true,
   lastUpdated: true,
+  
+  // 配置死链接检查
+  ignoreDeadLinks: false,
+  markdown: {
+    linkify: true,
+    config: (md) => {
+      md.options.xhtmlOut = true
+    }
+  },
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/assets/k.svg' }]],
   themeConfig: {
     logo: { 
