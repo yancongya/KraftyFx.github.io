@@ -1,4 +1,4 @@
 # 常见问题
 ## 如何让 KBar 调用另一个工具中的特定功能？
 
-请参阅[脚本按钮常见问题](/zh/kbar/buttons/scripts)了解如何执行此操作。
+请参阅[脚本按钮常见问题](/kbar/buttons/scripts)了解如何执行此操作。
