@@ -1,25 +1,26 @@
 {
-  "name": "kraftyfx-docs",
+  "name": "kbar-docs-zh",
   "version": "1.0.0",
-  "description": "KraftyFX Documentation",
+  "description": "KBar 中文文档",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/KraftyFX/KraftyFx.github.io.git"
+    "url": "git+https://github.com/yancongya/KraftyFx.github.io.git"
   },
-  "author": "rafikhan@kraftyfx.com",
+  "author": "yancongya",
   "license": "MIT",
   "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:dev": "vitepress dev .",
+    "docs:build": "vitepress build .",
+    "docs:preview": "vitepress preview .",
+    "build": "vitepress build ."
   },
   "keywords": [],
   "type": "module",
   "bugs": {
-    "url": "https://github.com/KraftyFX/KraftyFx.github.io/issues"
+    "url": "https://github.com/yancongya/KraftyFx.github.io/issues"
   },
-  "homepage": "https://github.com/KraftyFX/KraftyFx.github.io#readme",
+  "homepage": "https://github.com/yancongya/KraftyFx.github.io#readme",
   "dependencies": {
     "vitepress": "^1.6.4",
     "vue": "^3.5.21"

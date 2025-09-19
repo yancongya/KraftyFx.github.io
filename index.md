@@ -5,6 +5,11 @@ hero:
   name: KBar
   text: KBar 3 中文文档
   tagline: 基于VitePress重构汉化
+  image:
+    src: /assets/k.svg
+    alt: KBar Logo
+    light: /assets/k2.svg
+    dark: /assets/k.svg
   actions:
     - theme: brand
       text: 开始使用
@@ -146,5 +151,25 @@ features:
   color: var(--vp-c-text-2);
   font-size: 0.9rem;
   line-height: 1.6;
+}
+
+/* Hero image styles */
+:root {
+  --vp-home-hero-image-width: 160px;
+  --vp-home-hero-image-height: 160px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-width: 200px;
+    --vp-home-hero-image-height: 200px;
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-width: 280px;
+    --vp-home-hero-image-height: 280px;
+  }
 }
 </style>
