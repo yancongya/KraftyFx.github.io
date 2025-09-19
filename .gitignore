@@ -1,6 +1,9 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+# VitePress
+.vitepress/dist
+.vitepress/cache
+
+# Node
 node_modules
+
+# OS
+.DS_Store

@@ -1,3 +1,3 @@
-# KraftyFX Product Documentation
+# KraftyFX 产品文档
 
-This repository contains the documentation for KraftyFX products (mainly KBar).
+本仓库包含 KraftyFX 产品（主要是 KBar）的文档。
