@@ -1,15 +1,11 @@
 {
-  "framework": "vitepress",
   "buildCommand": "npm run docs:build",
-  "installCommand": "npm install",
   "outputDirectory": ".vitepress/dist",
-  "trailingSlash": false,
-  "routes": [
+  "installCommand": "npm install",
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "headers": { "cache-control": "public, max-age=0, must-revalidate" },
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/"
     }
-  ],
-  "cleanUrls": true
+  ]
 }

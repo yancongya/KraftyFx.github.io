@@ -4,12 +4,11 @@ export default defineConfig({
   title: 'KBar 3 中文文档',
   description: 'KBar 3 中文文档',
   lang: 'zh-CN',
-  base: '/',
+  base: '',
+  outDir: '.vitepress/dist',
   cleanUrls: true,
-  lastUpdated: true,
-  
-  // 完全禁用死链接检查
   ignoreDeadLinks: true,
+  lastUpdated: true,
   markdown: {
     linkify: true,
     config: (md) => {
