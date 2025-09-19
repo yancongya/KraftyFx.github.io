@@ -31,7 +31,7 @@ npm run docs:preview
 
 ## 📜 协议
 
-本项目文档内容采用 MIT 协议。协议详情见[此处](/LICENSE)。
+本项目文档内容采用 MIT 协议。详情见[GitHub 仓库的 LICENSE 文件](https://github.com/yancongya/KraftyFx.github.io/blob/main/LICENSE)。
 
 ## 🙏 鸣谢
 

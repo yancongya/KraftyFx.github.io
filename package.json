@@ -11,9 +11,9 @@
   "license": "MIT",
   "scripts": {
     "docs:dev": "vitepress dev .",
-    "docs:build": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096\" vitepress build . --no-check-links",
+    "docs:build": "vitepress build .",
     "docs:preview": "vitepress preview .",
-    "build": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096\" vitepress build . --no-check-links"
+    "build": "vitepress build ."
   },
   "keywords": [],
   "type": "module",

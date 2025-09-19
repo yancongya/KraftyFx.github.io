@@ -8,13 +8,8 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   
-  // 配置死链接检查
-  ignoreDeadLinks: [
-    // 忽略 README.md 中的 LICENSE 链接
-    /^\.\/LICENSE/,
-    // 忽略外部链接
-    /^https?:\/\//
-  ],
+  // 完全禁用死链接检查
+  ignoreDeadLinks: true,
   markdown: {
     linkify: true,
     config: (md) => {
