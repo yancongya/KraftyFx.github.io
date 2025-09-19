@@ -2,6 +2,10 @@
 
 这是 KBar 3 的中文文档网站，使用 VitePress 构建，提供完整的中文本地化支持。
 
+## ⚡ 一键部署
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyancongya%2FKraftyFx.github.io)
+
 ## 🛠️ 技术栈
 
 - **框架：** [VitePress](https://vitepress.dev/) v1.6.4 - Vue 驱动的静态站点生成器
