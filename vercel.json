@@ -1,9 +1,22 @@
 {
-  "framework": "vitepress",
-  "buildCommand": "npm run docs:build",
+  "buildCommand": "npm install && npm run docs:build",
   "installCommand": "npm install",
+  "framework": null,
   "outputDirectory": ".vitepress/dist",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    { 
+      "src": "/(.*)", 
+      "dest": "/$1",
+      "continue": true
+    }
+  ],
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=4096"
+  }
 }
